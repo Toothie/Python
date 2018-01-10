@@ -1,0 +1,33 @@
+{% include '/include/navbar.html' %}
+ <h2 class="form-signin-heading text-center">View of the assignments</h2> 
+ <hr class="divider">
+  {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+ <div class="row">
+	{% for i in data %} 
+	<div class="col-sm-4 ">
+ <div class="card">
+  <div class="card-header">
+    <b>Class:</b>{{ i[6] }}<br>
+    <b>Assignment:</b>{{ i[1] }}({{ i[0] }})<br>
+    <b>Date-to:</b>({{ i[2] }}) 
+<form action="/view_assignments" method="POST">
+    <button type="submit" name="option" value="{{i[0]}}" class="btn btn-danger" style="float:right">Delete</button>
+  </form>
+  </div>
+  <br>
+  <div class="card-block">
+    <blockquote class="card-blockquote text-center">
+      <p>{{ i[3] }}</p>
+    </blockquote>
+  </div>
+</div>
+<br>
+</div>
+{% endfor %}
+</div>
+ {% include 'include/footer.html' %}

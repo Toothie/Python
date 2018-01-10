@@ -1,0 +1,42 @@
+     {% include 'include/navbar.html' %}
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+
+       {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+
+
+      <form class="form-signin"  action="/assignment" method="POST">       
+        <h2 class="form-signin-heading text-center">Create assignment</h2>
+        <hr class="divider">
+        <div class="form-group">
+        <input type="number" class="form-control" name="id" placeholder="Assignment id" required autofocus="" max="99" />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="title" placeholder="Assignment title" required autofocus="" maxlength="20" />
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" name="date" required autofocus="" />
+      </div>
+      <div class="form-group">
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3" placeholder="Description (max 200 words)" maxlength="200" required></textarea>
+    </div> 
+    <div class="form-group">
+    	<label for="exampleFormControlSelect1">Select class id</label>
+    <select class="form-control" id="exampleFormControlSelect1" name='class_id'>
+    	{% for i in data %}
+    	<option value="{{ i[0] }}">{{ i[0] }}</option>
+    	{% endfor %}
+    </select>
+	</div>   
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create class</button>   
+      </form>
+    </div>
+   </div>
+
+         {% include 'include/footer.html' %}

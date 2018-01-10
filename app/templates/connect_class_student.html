@@ -1,0 +1,36 @@
+   {% include '/include/navbar.html' %}
+   <div class="col-sm-4 col-centered">
+    <div class="wrapper">
+
+       {% if messages is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ messages }}
+        </div> 
+      {% endif %}
+
+      <form class="form-signin"  action="/connect_class_student" method="POST"> 
+      <h2 class="form-signin-heading text-center">Connect student with class</h2> 
+      <hr class="divider">
+    <label for="exampleFormControlSelect1">Select user id</label>
+    <div class="form-group">
+    <select class="form-control" id="exampleFormControlSelect1" name='student_id'>
+    	{% for i in data %}
+    	<option value="{{ i[0] }}">{{ i[0] }}</option>
+    	{% endfor %}
+    </select>
+     <label for="exampleFormControlSelect1">Select class id</label>
+    <select class="form-control" id="exampleFormControlSelect1" name='class_id'>
+    	{% for i in data2 %}
+    	<option value="{{ i[0] }}">{{ i[0] }}</option>
+    	{% endfor %}
+    </select>
+</div>
+<div class="form-group">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Connect</button> 
+</div>
+	</form>
+  </div>
+</div>
+
+  {% include 'include/footer.html' %}

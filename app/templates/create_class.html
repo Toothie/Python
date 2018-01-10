@@ -1,0 +1,32 @@
+
+
+    {% include 'include/navbar.html' %}
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+
+       {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+
+      <form class="form-signin"  action="/create_class" method="POST">       
+        <h2 class="form-signin-heading text-center">Create class</h2>
+        <hr class="divider">
+        <div class="form-group">
+        <input type="number" class="form-control" name="id" placeholder="class id" required autofocus="" max='999' min='1' />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" maxlength="20" placeholder="class name" required autofocus="" />
+      </div>
+      <div class="form-group">
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3" placeholder="Description (max 200 words)" maxlength="200" required></textarea>
+    </div>    
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create class</button>   
+      </form>
+    </div>
+   </div>
+
+   {% include 'include/footer.html' %}

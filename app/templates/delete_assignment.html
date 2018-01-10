@@ -1,0 +1,31 @@
+ {% include '/include/navbar.html' %}
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+
+       {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+
+      <form class="form-signin"  action="/delete_assignment" method="POST"> 
+      	<h2 class="form-signin-heading text-center">Delete Assignment</h2> 
+        <hr class="divider">
+    <label for="exampleFormControlSelect1">Select assignment id</label>
+    <div class="form-group">
+    <select class="form-control" id="exampleFormControlSelect1" name='id'>
+    	{% for i in data %}
+    	<option value="{{ i[0] }}">{{ i[0] }}</option>
+    	{% endfor %}
+    </select>
+</div>
+<div class="form-group">
+    <button class="btn btn-lg btn-danger btn-block" type="submit">Delete assignment</button> 
+</div>
+	</form>
+	  </div>
+</div>
+
+
+  {% include 'include/footer.html' %}

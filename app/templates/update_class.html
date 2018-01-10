@@ -1,0 +1,56 @@
+   {% include '/include/navbar.html' %}
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+
+       {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+      
+      <form class="form-signin"  action="/update_class" method="POST"> 
+      <h2 class="form-signin-heading text-center">Update class</h2> 
+      <hr class="divider">
+    <label for="exampleFormControlSelect1">Select class id</label>
+    <div class="form-group">
+    <select class="form-control" id="exampleFormControlSelect1" name='id'>
+    	{% for i in data %}
+    	<option value="{{ i[0] }}">{{ i[0] }}</option>
+    	{% endfor %}
+    </select>
+</div>
+<div class="form-group">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="option" value='0' >Choose class id</button> 
+</div>
+	</form>
+	{{ messages }}
+  </div>
+</div>
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+      <form class="form-signin"  action="/update_class" method="POST">       
+        <h2 class="form-signin-heading">Update class {{ id }}</h2>
+        <div class="form-group">
+        	<label for="exampleFormControlSelect1">class id</label>
+        <input type="number" class="form-control" name="id" value="{{ id }}" required autofocus="" max='999' min='1' {{ status }} />
+      </div>
+      <div class="form-group">
+      	<label for="exampleFormControlSelect1">class name</label>
+        <input type="text" class="form-control" name="name" maxlength="20" value="{{ name }}" required autofocus="" {{ status }}/>
+      </div>
+      <div class="form-group">
+      	<label for="exampleFormControlSelect1">class description</label>
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3" maxlength="200" required {{ status }}>{{ desc }}</textarea>
+    </div>    
+    <div class="form-group">
+        <input type="password" class="form-control" name="id_class" value="{{ id_class }}" hidden/> 
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="option" value="1" {{status}} >Update class</button>   
+      </form>
+      {{ message }}
+    </div>
+   </div>
+    {% include 'include/footer.html' %}

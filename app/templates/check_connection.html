@@ -1,0 +1,43 @@
+          {% include '/include/navbar.html' %}
+<br>
+<h2 class="form-signin-heading text-center">Connections Student-Class</h2>
+<hr class="divider">
+<form class="form-inline col-sm-4" action="/check_connection" method="POST">
+  <div class="form-group mx-sm-2">
+    <input type="text" class="form-control" name=student_username id="inputPassword2" placeholder="Username">
+  </div>
+  <button type="submit" class="btn btn-primary" name="option" value="0">Search Student Connections</button> 
+  <a class="btn btn-primary mx-sm-4" href="/check_connection" role="button">Show All</a>
+</form>
+
+
+
+<hr class="divider">
+<div class="row text-center">
+  <div class="col-sm-4 ">Student username</div>
+  <div class="col-sm-4">Class id</div>
+  <div class="col-sm-4"></div>
+</div>
+<hr class="divider">
+
+
+{% for i in data %}   
+<div class="row text-center">
+          <form class="form-inline col-sm-12"  action="/check_connection" method="POST">   
+  <div class="col-sm-4 col-centered">
+    <input type="text" class="form-control" name="student_username" placeholder="{{ i[0] }}" value="{{ i[0] }}" readonly>
+  </div>
+  <div class="col-sm-4 col-centered">
+    <input type="text" class="form-control" name="class_id" placeholder="{{ i[1] }}" value="{{ i[1] }}" readonly>
+  </div>
+<div class="col-sm-4 col-centered">
+  <button type="submit" name="option" value="1" class="btn btn-danger">Delete</button>
+
+  </div>
+</form>
+</div>
+<hr class="divider">
+
+{% endfor %}
+
+         {% include 'include/footer.html' %}

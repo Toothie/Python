@@ -1,0 +1,60 @@
+   {% include '/include/navbar.html' %}
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+
+      {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+
+      <form class="form-signin"  action="/update_assignments" method="POST"> 
+      <h2 class="form-signin-heading text-center">Update Assignment</h2> 
+      <hr class="divider">
+    <label for="exampleFormControlSelect1">Select assignment id</label>
+    <div class="form-group">
+    <select class="form-control" id="exampleFormControlSelect1" name='id'>
+    	{% for i in data %}
+    	<option value="{{ i[0] }}">{{ i[0] }}</option>
+    	{% endfor %}
+    </select>
+</div>
+<div class="form-group">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="option" value='0' >Choose assignment id</button> 
+</div>
+	</form>
+	{{ messages }}
+  </div>
+</div>
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+      <form class="form-signin"  action="/update_assignments" method="POST" >       
+        <h2 class="form-signin-heading text-center">Update assignment {{ id }}</h2>
+        <hr class="divider">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Assignment id</label>
+        <input type="number" class="form-control" name="id" value="{{ id }}" required autofocus="" max="99" {{ status }}/>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Assignment title</label>
+        <input type="text" class="form-control" name="titles" value="{{ titles }}" required autofocus="" maxlength="20" {{ status }}/>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Assignment date-to</label>
+        <input type="date" class="form-control" name="date" required autofocus="" value="{{ date }}" {{ status }}/>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Assignment description</label>
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3" maxlength="200" required {{ status }}>{{ desc }}</textarea>
+    </div> 
+    <div class="form-group">  
+       <input type="text" class="form-control" name="id_assignment" value="{{ id_assignment }}" hidden/> 
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value='1' name='option' {{ status }}>Update Assignment</button>   
+      </form>
+      
+    </div>
+   </div>
+    {% include 'include/footer.html' %}

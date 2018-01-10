@@ -1,0 +1,51 @@
+ 
+  {% include '/include/navbar.html' %}
+
+<div class="col-sm-4 col-centered">
+    <div class="wrapper">
+      <form class="form-signin"  action="/classes" method="POST"> 
+      <h2 class="form-signin-heading text-center">Select Class</h2> 
+      <hr class="divider">
+    <div class="form-group">
+    <select class="form-control" id="exampleFormControlSelect1" name='class'>
+      {% for i in data %}
+      <option value="{{ i[0] }}">{{ i[1] }}({{i[0]}})</option>
+      {% endfor %}
+    </select>
+</div>
+<div class="form-group">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Select class</button> 
+</div>
+  </form>
+  {{ messages }}
+  </div>
+</div>
+<h2 class="form-signin-heading text-center">Assignments</h2> 
+ <hr class="divider">
+
+ {% for i in data2 %} 
+ 
+
+
+
+
+
+
+
+
+
+<div class="card" style="width: 100%;">
+  <div class="card-header">
+    <b>Class Name:</b>{{ i[4] }}({{ i[5] }})<br>
+    <b>Assignment:</b>{{ i[1] }}({{ i[0] }})<br>
+    <b>Date-to:</b>{{ i[2] }} <br>
+  </div>
+  <div class="card-body ">
+    <p class="card-text">{{ i[3] }}</p>
+  </div>
+</div>
+<hr class="divider">
+ {% endfor %}
+ 
+  
+    {% include 'include/footer.html' %}

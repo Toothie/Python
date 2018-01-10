@@ -1,0 +1,34 @@
+ {% include '/include/navbar.html' %}
+ <h2 class="form-signin-heading text-center">View of the classes</h2> 
+ <hr class="divider">
+ {% if message is defined %}
+      <br>
+         <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div> 
+      {% endif %}
+ <div class="row">
+   
+	{% for i in data %} 
+
+	<div class="col-sm-4 ">
+ <div class="card">
+  <div class="card-header">
+    {{ i[1] }}({{ i[0] }})
+    <form action="/view_classes" method="POST">
+    <button type="submit" name="option" value="{{i[0]}}" class="btn btn-danger" style="float:right">Delete</button>
+  </form>
+  </div>
+  <br>
+  <div class="card-block">
+    <blockquote class="card-blockquote text-center">
+      <p>{{ i[2] }}</p>
+    </blockquote>
+  </div>
+</div>
+<br>
+</div>
+
+{% endfor %}
+</div>
+ {% include 'include/footer.html' %}
