@@ -9,7 +9,7 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '' #database password
 app.config['MYSQL_DATABASE_DB'] = 'moodle' #database db
 app.config['MYSQL_DATABASE_HOST'] = 'localhost' #database host
 mysql.init_app(app) 
-app.secret_key = 'kappa' #secret key for sessions
+app.secret_key = 'hf083hfhf03h1hf380hf13hfbh1d2j1d21silotf997f1h9f319h931hf9h2f3a7h9a2goa7p92g93faa3' #secret key for sessions
 
 @app.route('/favicon.ico')
 def favicon():
@@ -276,6 +276,11 @@ def check():
 	else:
 		return True
 #------------------------------------------------------Unittests
+def testing(str):
+	cursor = mysql.connect().cursor()
+	cursor.execute("SELECT count(*) from "+str)
+	data = cursor.fetchone()
+	return data[0]
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0' , debug=True) #this is so it can run on the network to view from smartphone
